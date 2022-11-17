@@ -23,7 +23,7 @@ class LibraryFragment : Fragment() {
     ): View? {
 
         val view: View =  inflater.inflate(R.layout.fragment_library, container, false)
-        val myDataset = Datasource().loadSampleAlbums()
+        val myDataset = Datasource().loadSampleAlbums(25).shuffled()
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_library)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
         recyclerView.adapter = LibraryAdapter(myDataset)

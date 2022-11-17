@@ -10,17 +10,11 @@
         android:name="din.heed_music.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_libraryFragment2"
-            app:destination="@id/libraryFragment" />
     </fragment>
     <fragment
         android:id="@+id/libraryFragment"
         android:name="din.heed_music.LibraryFragment"
         android:label="fragment_library"
         tools:layout="@layout/fragment_library" >
-        <action
-            android:id="@+id/action_libraryFragment_to_homeFragment2"
-            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

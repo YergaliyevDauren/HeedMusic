@@ -34,7 +34,6 @@ class CarouselAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.txt_albumTitle.text = dataSet[position].title
         holder.txt_artist.text = dataSet[position].artist
-//        val imgBitmap = BitmapFactory.decodeFile(dataSet[position].coverPath)
         holder.img_albumCover.load(dataSet[position].coverPath)
     }
 
