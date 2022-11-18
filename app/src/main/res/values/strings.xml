@@ -10,4 +10,5 @@
     <string name="search">Search</string>
     <string name="library">Library</string>
     <string name="image">image</string>
+    <string name="recently_searched">Recently Searched</string>
 </resources>

@@ -1,3 +1,5 @@
+package din.heed_music
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

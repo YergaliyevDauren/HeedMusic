@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/libraryFragment"
-    tools:context="com.dauren.heed_music_local.fragments.LibraryFragment">
+    tools:context="din.heed_music.LibraryFragment">
 
     <data>
         <variable

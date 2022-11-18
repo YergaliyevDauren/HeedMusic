@@ -32,5 +32,6 @@ class Datasource {
     )
     fun loadSampleAlbums(count: Int) = sampleAlbums.subList(0, count)
     fun loadSampleAlbums() = sampleAlbums
+    fun loadSampleRecentlySearched() = loadSampleAlbums(12)
 
 }
