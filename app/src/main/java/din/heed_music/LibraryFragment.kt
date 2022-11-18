@@ -1,17 +1,18 @@
-package din.heed_music
-
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import din.adapter.CarouselAdapter
 import din.adapter.LibraryAdapter
-import din.data.Datasource
+import din.heed_music.LibraryViewModel
+import din.heed_music.databinding.FragmentLibraryBinding
 
 class LibraryFragment : Fragment() {
+
+    private lateinit var binding: FragmentLibraryBinding
+    private val viewModel: LibraryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,12 +22,13 @@ class LibraryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentLibraryBinding.inflate(inflater, container, false)
+        binding.libraryViewModel = viewModel
 
-        val view: View =  inflater.inflate(R.layout.fragment_library, container, false)
-        val myDataset = Datasource().loadSampleAlbums(25).shuffled()
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_library)
+        val recyclerView = binding.rvLibrary
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
-        recyclerView.adapter = LibraryAdapter(myDataset)
-        return view
+        recyclerView.adapter = LibraryAdapter(viewModel.dataSet)
+
+        return binding.root
     }
 }
