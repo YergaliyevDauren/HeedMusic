@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "930993879630",
+    "project_id": "heedmusic-3896e",
+    "storage_bucket": "heedmusic-3896e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930993879630:android:fc600986a69b616e4f611f",
+        "android_client_info": {
+          "package_name": "din.heed_music"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930993879630-2ia7ehbohs7pf6ank1qbbtc23ib7sajl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEj0DhkMKWcpM3G__OgkmEsTBVMNtMiPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930993879630-2ia7ehbohs7pf6ank1qbbtc23ib7sajl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
