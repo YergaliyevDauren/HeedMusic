@@ -1,4 +1,5 @@
 package din.heed_music
 
-class RegistrationPage {
+class RegistrationPage   {
+
 }

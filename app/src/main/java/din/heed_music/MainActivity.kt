@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.registration_page)
-    /*
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
         val navController = findNavController(R.id.nav_host_fragment)
@@ -37,6 +35,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        binding.viewModel = MainViewModel()*/
+        binding.viewModel = MainViewModel()
     }
 }
