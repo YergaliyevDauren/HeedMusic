@@ -14,7 +14,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
