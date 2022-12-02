@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
         binding.viewModel = MainViewModel()
     }
 }
