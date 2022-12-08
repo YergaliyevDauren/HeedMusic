@@ -10,4 +10,5 @@
     <string name="search">Search</string>
     <string name="library">Library</string>
     <string name="image">image</string>
+    <string name="already_registered_sign_in">Already registered Sign in</string>
 </resources>
