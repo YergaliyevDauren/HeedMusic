@@ -5,11 +5,11 @@
 
     <data>
         <variable name="homeViewModel"
-            type="din.heed_music.HomeViewModel" />
+            type="din.home.HomeViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
-        tools:context="din.heed_music.HomeFragment"
+        tools:context="com.dauren.heed_music_local.fragments.HomeFragment"
         android:background="@color/Midnight_Blue"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +35,7 @@
 
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/circle_img"
+                    android:background="@drawable/circle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -93,10 +93,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="horizontal"
+                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    app:layoutManager="LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/txt_title_recently"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="1"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/song_card_item"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -124,8 +128,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="horizontal"
+                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    app:layoutManager="LinearLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/txt_title_sounds_like_recently"
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -153,8 +158,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="horizontal"
+                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
-                    app:layoutManager="LinearLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/txt_title_todays_hits"
                     app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>

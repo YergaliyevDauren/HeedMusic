@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="margin_1">8dp</dimen>
+    <dimen name="margin_2">16dp</dimen>
+    <dimen name="margin_3">24dp</dimen>
+
+    <dimen name="padding_1">8dp</dimen>
+    <dimen name="padding_2">16dp</dimen>
+    <dimen name="padding_3">24dp</dimen>
+    <dimen name="padding_4">32dp</dimen>
+    <dimen name="padding_5">40dp</dimen>
+    <dimen name="padding_6">48dp</dimen>
+    <dimen name="padding_7">56dp</dimen>
+    <dimen name="padding_8">64dp</dimen>
+
+    <dimen name="tab_height">48dp</dimen>
+
+    <dimen name="title_height_1">48dp</dimen>
+    <dimen name="title_height_2">64dp</dimen>
+
+    <dimen name="icon_size_1">16dp</dimen>
+    <dimen name="icon_size_2">24dp</dimen>
+    <dimen name="icon_size_3">32dp</dimen>
+
+    <dimen name="tab_text_size">16sp</dimen>
+    <dimen name="title_text_size_1">16sp</dimen>
+    <dimen name="title_text_size_2">24sp</dimen>
+    <dimen name="title_text_size_3">32sp</dimen>
+</resources>

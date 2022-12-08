@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="din.heed_music.MainViewModel" />
+            type="din.MainViewModel" />
+        <variable name="currSong"
+            type="din.database.LibrarySong" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +25,7 @@
             app:defaultNavHost="true" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/miniplayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
@@ -31,7 +33,6 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:background="@color/Indigo"
-            android:visibility="@{viewModel.miniPlayerVisible ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
 
             <ImageView
@@ -42,19 +43,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:contentDescription="Mini player song cover" />
+                android:contentDescription="Mini player song cover"
+                app:songCover="@{currSong}"/>
 
             <TextView
                 android:id="@+id/txt_miniplayer_song"
                 android:textSize="16sp"
                 android:textColor="@color/white"
+                tools:text="Sample Song"
+                app:songTitle="@{currSong}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_miniplayer_cover"
-                tools:text="Sample Song" />
+                 />
 
             <ImageView
                 android:id="@+id/ic_mp_play"
@@ -62,6 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:onClick="@{()-> viewModel.resumeOrPause()}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ic_mp_fast_forward" />

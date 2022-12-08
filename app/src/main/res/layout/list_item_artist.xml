@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="artist"
+            type="din.database.Artist" />
+        <variable
+            name="clickListener"
+            type="din.adapter.LibArtistItemListener"/>
+    </data>
+
+    <LinearLayout
+        android:onClick="@{() -> clickListener.onClick(artist)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/Midnight_Blue"
+
+        android:paddingStart="@dimen/padding_2"
+        android:paddingEnd="@dimen/padding_2">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            app:cardCornerRadius="60dp">
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:artistImage="@{artist}" />
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/padding_2"
+            android:background="@drawable/bg_bottom_line">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/title_text_size_1"
+                android:textColor="@color/white"
+                tools:text="The Avalanches"
+                app:artistName="@{artist}" />
+        </FrameLayout>
+    </LinearLayout>
+</layout>
