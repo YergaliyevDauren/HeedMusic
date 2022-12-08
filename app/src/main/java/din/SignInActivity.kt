@@ -1,4 +1,4 @@
-package din.heed_music
+package din
 
 import android.content.Intent
 import android.os.Bundle
@@ -45,7 +45,7 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    /*
+
     override fun onStart() {
         super.onStart()
 
@@ -53,5 +53,5 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-    }*/
+    }
 }

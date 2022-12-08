@@ -32,7 +32,7 @@ class HomeFragment : Fragment() {
         val homeViewModel = ViewModelProvider(this, viewModelFactory).get(
             HomeViewModel::class.java)
         binding.homeViewModel = homeViewModel
-        binding.imgProfile.load("https://img1.ak.crunchyroll.com/i/spire2/1d8b407eb8961f96cf0e65136088d5071551823951_full.png")
+        binding.imgProfile.load("https://64.media.tumblr.com/6d11589b7c2cd92417cc5555d9d467d0/tumblr_psg6pbcUPt1xa3vq3o5_400.png")
 
         val songCardItemAdapter = SongCardItemAdapter(SongCardItemListener { songId -> })
 

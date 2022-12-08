@@ -1,4 +1,4 @@
-package din.heed_music
+package din
 
 import android.content.Intent
 import android.os.Bundle
