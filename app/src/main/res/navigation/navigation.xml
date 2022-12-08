@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
@@ -7,14 +8,81 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="din.heed_music.HomeFragment"
+        android:name="din.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
     </fragment>
     <fragment
-        android:id="@+id/libraryFragment"
-        android:name="din.heed_music.LibraryFragment"
-        android:label="fragment_library"
-        tools:layout="@layout/fragment_library" >
+        android:id="@+id/searchFragment"
+        android:name="din.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/libraryMainFragment"
+        android:name="din.library.main.LibraryMainFragment"
+        android:label="LibraryMainFragment"
+        tools:layout="@layout/fragment_library_main">
+        <action
+            android:id="@+id/action_libraryMainFragment_to_librarySongsFragment"
+            app:destination="@id/librarySongsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right"/>
+        <action
+            android:id="@+id/action_libraryMainFragment_to_libraryAlbumsFragment"
+            app:destination="@id/libraryAlbumsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_right" />
+        <action
+            android:id="@+id/action_libraryMainFragment_to_libraryArtistsFragment"
+            app:destination="@id/libraryArtistsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/librarySongsFragment"
+        android:name="din.library.songs.LibrarySongsFragment"
+        android:label="LibrarySongsFragment"
+        tools:layout="@layout/fragment_library_songs">
+        <action
+            android:id="@+id/action_librarySongsFragment_to_libraryMainFragment"
+            app:destination="@id/libraryMainFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/libraryAlbumsFragment"
+        android:name="din.library.albums.LibraryAlbumsFragment"
+        android:label="LibraryAlbumsFragment"
+        tools:layout="@layout/fragment_library_albums">
+        <action
+            android:id="@+id/action_libraryAlbumsFragment_to_libraryMainFragment"
+            app:destination="@id/libraryMainFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:popEnterAnim="@anim/slide_in_left"/>
+        <action
+            android:id="@+id/action_libraryAlbumsFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="din.library.albums.AlbumFragment"
+        android:label="AlbumFragment"
+        tools:layout="@layout/fragment_album">
+        <action
+            android:id="@+id/action_albumFragment_to_libraryAlbumsFragment"
+            app:destination="@id/libraryAlbumsFragment" />
+        <argument
+            android:name="albumId"
+            app:argType="long"
+            android:defaultValue="1L" />
+    </fragment>
+    <fragment
+        android:id="@+id/libraryArtistsFragment"
+        android:name="din.library.artists.LibraryArtistsFragment"
+        android:label="LibraryArtistsFragment"
+        tools:layout="@layout/fragment_library_artists">
+        <action
+            android:id="@+id/action_libraryArtistsFragment_to_libraryMainFragment"
+            app:destination="@id/libraryMainFragment" />
     </fragment>
 </navigation>
