@@ -28,7 +28,7 @@ class LibraryAlbumsFragment : Fragment() {
         binding.libAlbumsViewmodel = libAlbumsViewModel
 
         val albumCardItemAdapter = AlbumCardItemAdapter(AlbumCardItemListener {
-            this.findNavController().navigate(LibraryAlbumsFragmentDirections.actionLibraryAlbumsFragmentToAlbumFragment(it))
+            this.findNavController().navigate(LibraryAlbumsFragmentDirections.actionLibraryAlbumsFragmentToAlbumFragment(it,"LibraryAlbums"))
         })
         binding.rvLibAlbums.adapter = albumCardItemAdapter
 

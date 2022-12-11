@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import din.database.Album
 import din.database.LibrarySong
 import din.database.LibrarySongsDao
 import kotlinx.coroutines.launch
@@ -14,7 +15,7 @@ class LibraryMainViewModel(
 ) : ViewModel()
 {
     val database = dataSource
-    val songs: LiveData<List<LibrarySong>> = dataSource.getAllLibSongs()
+    val recentSongsByAlbums: LiveData<List<Album>> = dataSource.getRecentSongsByAlbums()
 
     private val _navigateToSection = MutableLiveData<String?>()
     val navigateToSection: LiveData<String?>
@@ -39,7 +40,5 @@ class LibraryMainViewModel(
             database.insert(song)
         }
     }
-
-
 }
 

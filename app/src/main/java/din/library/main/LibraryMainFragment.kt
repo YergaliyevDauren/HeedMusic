@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import din.adapter.AlbumCardItemAdapter
+import din.adapter.AlbumCardItemListener
 import din.adapter.SongCardItemAdapter
 import din.adapter.SongCardItemListener
 import din.database.LibraryDatabase
@@ -19,7 +21,7 @@ import din.heed_music.databinding.FragmentLibraryMainBinding
 class LibraryMainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View? {
         val binding: FragmentLibraryMainBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_library_main, container, false)
 
@@ -27,16 +29,17 @@ class LibraryMainFragment : Fragment() {
         val dataSource = LibraryDatabase.getInstance(application).librarySongsDao()
         val viewModelFactory = LibraryMainViewModelFactory(dataSource)
 
-        val libraryMainViewModel = ViewModelProvider(this, viewModelFactory).get(
-            LibraryMainViewModel::class.java)
+        val libraryMainViewModel = ViewModelProvider(this, viewModelFactory).get(LibraryMainViewModel::class.java)
         binding.libMainViewModel = libraryMainViewModel
 
-        val songCardItemAdapter = SongCardItemAdapter(SongCardItemListener { songId -> })
+        val albumCardItemAdapter = AlbumCardItemAdapter(AlbumCardItemListener {
+            this.findNavController().navigate(LibraryMainFragmentDirections.actionLibraryMainFragmentToAlbumFragment(it, "LibraryMain"))
+        })
         binding.rvRecentlyAdded.layoutManager = GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
-        binding.rvRecentlyAdded.adapter = songCardItemAdapter
+        binding.rvRecentlyAdded.adapter = albumCardItemAdapter
 
-        libraryMainViewModel.songs.observe(viewLifecycleOwner, Observer {
-            songCardItemAdapter.submitList(it)
+        libraryMainViewModel.recentSongsByAlbums.observe(viewLifecycleOwner, Observer {
+            albumCardItemAdapter.submitList(it)
         })
 
         val navController = this.findNavController()
@@ -44,11 +47,11 @@ class LibraryMainFragment : Fragment() {
         libraryMainViewModel.navigateToSection.observe(viewLifecycleOwner, Observer {
             when(it) {
                 "artists" -> navController.navigate(
-                        LibraryMainFragmentDirections.actionLibraryMainFragmentToLibraryArtistsFragment())
+                    LibraryMainFragmentDirections.actionLibraryMainFragmentToLibraryArtistsFragment())
                 "albums" -> navController.navigate(
-                        LibraryMainFragmentDirections.actionLibraryMainFragmentToLibraryAlbumsFragment())
+                    LibraryMainFragmentDirections.actionLibraryMainFragmentToLibraryAlbumsFragment())
                 "songs" -> navController.navigate(
-                        LibraryMainFragmentDirections.actionLibraryMainFragmentToLibrarySongsFragment())
+                    LibraryMainFragmentDirections.actionLibraryMainFragmentToLibrarySongsFragment())
             }
 
         })

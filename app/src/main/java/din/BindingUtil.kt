@@ -7,6 +7,7 @@ import coil.load
 import din.database.Album
 import din.database.Artist
 import din.database.LibrarySong
+import din.heed_music.database.RecentSearch
 
 @BindingAdapter("songTitle")
 fun TextView.setSongTitle(item: LibrarySong?) {
@@ -46,4 +47,9 @@ fun ImageView.setAlbumCover(item: Album?) {
 @BindingAdapter("artistImage")
 fun ImageView.setArtistImage(item: Artist?) {
         item?.let { load(item.artistImage) }
+}
+
+@BindingAdapter("searchText")
+fun TextView.setSearchText(item: RecentSearch?) {
+        item?.let { text=item.searchText }
 }

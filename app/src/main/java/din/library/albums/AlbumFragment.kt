@@ -39,13 +39,18 @@ class AlbumFragment : Fragment() {
         libAlbumViewModel.album.observe(viewLifecycleOwner, Observer {
             binding.album = it
         })
-        libAlbumViewModel.navigateToLibraryAlbums.observe(viewLifecycleOwner, Observer {
+        libAlbumViewModel.navigateBack.observe(viewLifecycleOwner, Observer {
             if(it == true) {
-                this.findNavController().navigate(
-                    AlbumFragmentDirections.actionAlbumFragmentToLibraryAlbumsFragment())
+                when(args.openedFrom) {
+                    "LibraryMain" -> this.findNavController().navigate(
+                        AlbumFragmentDirections.actionAlbumFragmentToLibraryMainFragment())
+                    "LibraryAlbums" -> this.findNavController().navigate(
+                        AlbumFragmentDirections.actionAlbumFragmentToLibraryAlbumsFragment())
+                }
                 libAlbumViewModel.doneNavigating()
             }
         })
+
         return binding.root
     }
 }

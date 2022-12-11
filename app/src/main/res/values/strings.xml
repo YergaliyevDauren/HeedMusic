@@ -10,7 +10,7 @@
     <string name="search">Search</string>
     <string name="library">Library</string>
     <string name="image">image</string>
-    <string name="recently_searched">Recently searched</string>
+    <string name="recently_searched">Recently searched:</string>
     <string name="welcome_back">Welcome back,</string>
     <string name="songs">Songs</string>
     <string name="albums">Albums</string>
@@ -19,4 +19,5 @@
     <string name="recently_added">Recently Added</string>
     <string name="play">Play</string>
     <string name="shuffle">Shuffle</string>
+    <string name="search_results">Search Results:</string>
 </resources>

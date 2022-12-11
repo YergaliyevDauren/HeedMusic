@@ -15,11 +15,11 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".library.albums.AlbumFragment">
+        tools:context=".library.albums.AlbumFragment"
+        android:background="@color/Midnight_Blue">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/Midnight_Blue"
             android:paddingTop="@dimen/padding_2"
             android:paddingStart="@dimen/padding_2"
             android:paddingEnd="@dimen/padding_2"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:onClick="@{() -> albumViewModel.navigateBackToLibraryAlbums()}"
+                    android:onClick="@{() -> albumViewModel.navigateBack()}"
                     android:layout_width="@dimen/icon_size_3"
                     android:layout_height="@dimen/icon_size_3"
                     app:flow_verticalBias="0.5"

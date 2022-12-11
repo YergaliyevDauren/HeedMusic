@@ -15,16 +15,16 @@ class LibraryAlbumViewModel(
     val album: LiveData<Album> = dataSource.getAlbumById(albumId)
     val albumSongs: LiveData<List<LibrarySong>> = dataSource.getAlbumSongs(albumId)
 
-    private val _navigateToLibraryAlbums = MutableLiveData<Boolean?>()
-    val navigateToLibraryAlbums: LiveData<Boolean?>
-        get() = _navigateToLibraryAlbums
+    private val _navigateBack = MutableLiveData<Boolean?>()
+    val navigateBack: LiveData<Boolean?>
+        get() = _navigateBack
 
-    fun navigateBackToLibraryAlbums() {
-        _navigateToLibraryAlbums.value = true
+    fun navigateBack() {
+        _navigateBack.value = true
     }
 
     fun doneNavigating() {
-        _navigateToLibraryAlbums.value = null
+        _navigateBack.value = null
     }
 }
 

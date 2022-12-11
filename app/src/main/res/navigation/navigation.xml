@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_libraryMainFragment_to_libraryArtistsFragment"
             app:destination="@id/libraryArtistsFragment" />
+        <action
+            android:id="@+id/action_libraryMainFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
     </fragment>
     <fragment
         android:id="@+id/librarySongsFragment"
@@ -75,6 +78,13 @@
             android:name="albumId"
             app:argType="long"
             android:defaultValue="1L" />
+        <action
+            android:id="@+id/action_albumFragment_to_libraryMainFragment"
+            app:destination="@id/libraryMainFragment" />
+        <argument
+            android:name="openedFrom"
+            app:argType="string"
+            android:defaultValue="LibraryMain" />
     </fragment>
     <fragment
         android:id="@+id/libraryArtistsFragment"

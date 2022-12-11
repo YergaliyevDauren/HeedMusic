@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import din.database.Artist
 import din.database.LibrarySong
+import din.heed_music.database.RecentSearch
 
 @Dao
 interface LibrarySongsDao {
@@ -33,4 +34,18 @@ interface LibrarySongsDao {
 
     @Query("SELECT * FROM Artists ORDER BY artistName")
     fun getAllLibArtists(): LiveData<List<Artist>>
+
+    @Query("SELECT a.albumId, a.albumName, a.artistName, a.coverPath " +
+            "FROM Albums a, LibrarySongs s WHERE s.albumName = a.albumName " +
+            "GROUP BY s.albumName ORDER BY songId DESC")
+    fun getRecentSongsByAlbums(): LiveData<List<Album>>
+
+    @Query("SELECT * FROM LibrarySongs WHERE songTitle LIKE :pattern LIMIT 20")
+    fun getSongsLikePattern(pattern: String?) : List<LibrarySong>
+
+    @Query("SELECT * FROM RecentSearches ORDER BY searchId")
+    fun getRecentSearches() : LiveData<List<RecentSearch>>
+
+    @Query("INSERT INTO RecentSearches VALUES (NULL,:search)")
+    suspend fun insertRecentSearch(search: String)
 }

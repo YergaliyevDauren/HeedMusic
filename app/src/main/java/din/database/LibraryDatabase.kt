@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import din.heed_music.database.RecentSearch
 
-@Database(entities = [LibrarySong::class, Album::class, Artist::class], version=1, exportSchema = false)
+@Database(entities = [LibrarySong::class, Album::class, Artist::class, RecentSearch::class], version=1, exportSchema = false)
 abstract class LibraryDatabase : RoomDatabase() {
 
     abstract fun librarySongsDao() : LibrarySongsDao
