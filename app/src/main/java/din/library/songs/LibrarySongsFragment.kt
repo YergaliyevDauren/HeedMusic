@@ -33,7 +33,7 @@ class LibrarySongsFragment : Fragment() {
 
         val songListItemAdapter = SongListItemAdapter(ListItemListener {
             val mainViewModel: MainViewModel by activityViewModels()
-            mainViewModel.setCurrentSong(it)
+            mainViewModel.play(it)
         })
         binding.rvLibSonsgs.layoutManager = LinearLayoutManager(context)
         binding.rvLibSonsgs.adapter = songListItemAdapter
