@@ -1,15 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <data>
+
         <variable
             name="viewModel"
             type="din.MainViewModel" />
-        <variable name="currSong"
+
+        <variable
+            name="currSong"
             type="din.database.LibrarySong" />
+
     </data>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,18 +28,19 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:navGraph="@navigation/navigation"
-            app:defaultNavHost="true" />
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/navigation" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/miniplayer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:background="@color/Indigo"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
 
             <ImageView
@@ -40,45 +48,44 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/mini_cover_shape"
+                android:contentDescription="Mini player song cover"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:contentDescription="Mini player song cover"
-                app:songCover="@{currSong}"/>
+                app:songCover="@{currSong}" />
 
             <TextView
                 android:id="@+id/txt_miniplayer_song"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                tools:text="Sample Song"
-                app:songTitle="@{currSong}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/img_miniplayer_cover"
-                 />
+                app:layout_constraintTop_toTopOf="parent"
+                app:songTitle="@{currSong}"
+                tools:text="Sample Song" />
 
             <ImageView
                 android:id="@+id/ic_mp_play"
-                android:background="@drawable/ic_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:background="@drawable/ic_play"
                 android:onClick="@{()-> viewModel.resumeOrPause(currSong.songId)}"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/ic_mp_fast_forward" />
+                app:layout_constraintEnd_toStartOf="@+id/ic_mp_fast_forward"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/ic_mp_fast_forward"
-                android:background="@drawable/ic_fast_forward"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/ic_fast_forward"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,11 +93,9 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_bottom_navigation"
-            app:itemIconTint="@android:color/white"
-            app:itemTextColor="@android:color/white"
-            app:menu="@menu/bottom_navigation_menu"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_navigation_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
