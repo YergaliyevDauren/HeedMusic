@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import coil.load
-import din.adapter.SongCardItemAdapter
-import din.adapter.SongCardItemListener
+import din.adapter.*
 import din.database.LibraryDatabase
 import din.heed_music.R
 import din.heed_music.databinding.FragmentHomeBinding
@@ -34,11 +35,19 @@ class HomeFragment : Fragment() {
         binding.homeViewModel = homeViewModel
         binding.imgProfile.load("https://64.media.tumblr.com/6d11589b7c2cd92417cc5555d9d467d0/tumblr_psg6pbcUPt1xa3vq3o5_400.png")
 
-        val songCardItemAdapter = SongCardItemAdapter(SongCardItemListener { songId -> })
+        val carouselAdapter = CarouselCardItemAdapter(CarouselCardItemListener { alubmId -> })
+        val carouselAdapter1 = CarouselCardItemAdapter(CarouselCardItemListener { alubmId -> })
+        val carouselAdapter2 = CarouselCardItemAdapter(CarouselCardItemListener { alubmId -> })
 
-        binding.rvCarouselRecently.adapter = songCardItemAdapter
-        binding.rvCarouselSoundsLikeRecently.adapter = songCardItemAdapter
-        binding.rvCarouselTodaysHits.adapter = songCardItemAdapter
+        binding.rvCarouselRecently.adapter = carouselAdapter
+        binding.rvCarouselSoundsLikeRecently.adapter = carouselAdapter1
+        binding.rvCarouselTodaysHits.adapter = carouselAdapter2
+
+        homeViewModel.songs.observe(viewLifecycleOwner, Observer {
+            carouselAdapter.submitList(it)
+            carouselAdapter1.submitList(it.shuffled())
+            carouselAdapter2.submitList(it.shuffled())
+        })
         return binding.root
     }
 }

@@ -33,8 +33,16 @@ class MainViewModel (
     private val _currSelectedSong = MutableLiveData<LibrarySong?>()
     val currSelectedSong: LiveData<LibrarySong?> = _currSelectedSong
 
-    fun setCurrentSong(songId : Long) {
+    private val _openBigPlayer = MutableLiveData<Boolean?>()
+    val openBigPlayer: LiveData<Boolean?>
+        get() = _openBigPlayer
 
+    fun navigateBackToLibrary() {
+        _openBigPlayer.value = true
+    }
+
+    fun doneNavigating() {
+        _openBigPlayer.value = null
     }
 
     private fun setIsPlaying(isPlaying: Boolean) {
