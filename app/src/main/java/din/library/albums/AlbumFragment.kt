@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import din.MainViewModel
 import din.adapter.ListItemListener
 import din.adapter.SongListItemAdapter
 import din.database.LibraryDatabase
@@ -30,6 +32,8 @@ class AlbumFragment : Fragment() {
         binding.albumViewModel = libAlbumViewModel
 
         val songListItemAdapter = SongListItemAdapter(ListItemListener {
+            val mainViewModel: MainViewModel by activityViewModels()
+            mainViewModel.play(it)
         })
         binding.rvAlbumSongs.adapter = songListItemAdapter
 

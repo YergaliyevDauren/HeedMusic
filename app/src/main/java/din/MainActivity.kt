@@ -11,10 +11,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import din.database.LibraryDatabase
 import din.heed_music.R
 import din.heed_music.databinding.ActivityMainBinding
+import din.library.albums.LibraryAlbumsFragmentDirections
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -69,5 +71,10 @@ class MainActivity : AppCompatActivity() {
                 binding.icMpPlay.setBackgroundResource(R.drawable.ic_play)
             }
         })
+        mainViewModel.openBigPlayer.observe(this, Observer {
+
+        })
     }
+
+
 }

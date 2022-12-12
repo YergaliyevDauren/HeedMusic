@@ -15,9 +15,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import din.MainViewModel
 import din.adapter.ListItemListener
 import din.adapter.SearchItemAdapter
 import din.adapter.SearchItemListener
@@ -45,7 +47,10 @@ class SearchFragment : Fragment() {
 
         val searchEditText = binding.etSearch
         setOnEditorActionListener(context,searchViewModel,searchEditText)
-        val searchResultsAdapter = SongListItemAdapter(ListItemListener { songId -> })
+        val searchResultsAdapter = SongListItemAdapter(ListItemListener {
+            val mainViewModel: MainViewModel by activityViewModels()
+            mainViewModel.play(it)
+        })
         val recentSearchesAdapter = SearchItemAdapter(SearchItemListener {
             searchEditText.setText(it, TextView.BufferType.EDITABLE)
             searchEditText.setSelection(searchEditText.length())

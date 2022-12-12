@@ -4,18 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import din.database.Album
 import din.database.LibrarySong
 import din.database.LibrarySongsDao
 
 class HomeViewModel (
     dataSource: LibrarySongsDao
 ) : ViewModel() {
-    val songs: LiveData<List<LibrarySong>> = dataSource.getAllLibSongs()
+    val songs: LiveData<List<Album>> = dataSource.getRecentSongsByAlbums()
 
-    private val _name = MutableLiveData("Iskandar")
+    var _name = MutableLiveData("Iskandar")
     private val _lastname = MutableLiveData("Rasulov")
 
-    val name: LiveData<String> = _name
+    var name: LiveData<String> = _name
     val lastName: LiveData<String> = _lastname
 }
 
