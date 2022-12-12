@@ -13,10 +13,10 @@ class HomeViewModel (
 ) : ViewModel() {
     val songs: LiveData<List<Album>> = dataSource.getRecentSongsByAlbums()
 
-    private val _name = MutableLiveData("Iskandar")
+    var _name = MutableLiveData("Iskandar")
     private val _lastname = MutableLiveData("Rasulov")
 
-    val name: LiveData<String> = _name
+    var name: LiveData<String> = _name
     val lastName: LiveData<String> = _lastname
 }
 
