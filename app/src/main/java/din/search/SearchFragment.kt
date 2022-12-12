@@ -19,6 +19,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import din.MainViewModel
 import din.adapter.ListItemListener
 import din.adapter.SearchItemAdapter
@@ -28,6 +29,7 @@ import din.database.LibraryDatabase
 import din.heed_music.R
 import din.heed_music.databinding.FragmentSearchBinding
 import din.search.SearchViewModel
+import kotlinx.coroutines.async
 
 class SearchFragment : Fragment() {
     override fun onCreateView(
@@ -49,7 +51,10 @@ class SearchFragment : Fragment() {
         setOnEditorActionListener(context,searchViewModel,searchEditText)
         val searchResultsAdapter = SongListItemAdapter(ListItemListener {
             val mainViewModel: MainViewModel by activityViewModels()
-            mainViewModel.play(it)
+            lifecycleScope.async {
+
+                mainViewModel.playSong(dataSource.get(it))
+            }
         })
         val recentSearchesAdapter = SearchItemAdapter(SearchItemListener {
             searchEditText.setText(it, TextView.BufferType.EDITABLE)

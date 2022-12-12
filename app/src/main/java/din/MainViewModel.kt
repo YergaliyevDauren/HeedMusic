@@ -49,17 +49,16 @@ class MainViewModel (
         _isPlaying.value = isPlaying
     }
 
-    private fun getSong(songId: Long) {
-        viewModelScope.launch(Dispatchers.IO) {
-            _currSelectedSong.postValue(dataSource.get(songId))
+    fun play(songId: Long) {
+
+        viewModelScope.async {
+            playSong(dataSource.get(songId))
         }
     }
 
-    fun play(songId: Long) {
-        if(_currSelectedSong.value == null || songId != _currSelectedSong.value?.songId) {
-            getSong(songId)
-            Log.d("MainViewModel", "${_currSelectedSong.value?.albumName}")
-        }
+    fun playSong(song: LibrarySong)  {
+        _currSelectedSong.value = song
+        Log.d("MainViewModel", "${_currSelectedSong.value?.albumName}")
         if(currSongLink != _currSelectedSong.value?.songLink) {
             currSongLink = _currSelectedSong.value?.songLink
             mediaPlayer.reset()

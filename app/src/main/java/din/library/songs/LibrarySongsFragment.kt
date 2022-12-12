@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import din.adapter.ListItemListener
@@ -17,6 +18,7 @@ import din.database.LibraryDatabase
 import din.MainViewModel
 import din.heed_music.R
 import din.heed_music.databinding.FragmentLibrarySongsBinding
+import kotlinx.coroutines.async
 
 class LibrarySongsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +35,10 @@ class LibrarySongsFragment : Fragment() {
 
         val songListItemAdapter = SongListItemAdapter(ListItemListener {
             val mainViewModel: MainViewModel by activityViewModels()
-            mainViewModel.play(it)
+            lifecycleScope.async {
+
+                mainViewModel.playSong(dataSource.get(it))
+            }
         })
         binding.rvLibSonsgs.layoutManager = LinearLayoutManager(context)
         binding.rvLibSonsgs.adapter = songListItemAdapter

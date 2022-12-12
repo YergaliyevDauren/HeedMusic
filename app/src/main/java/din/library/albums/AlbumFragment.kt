@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import din.MainViewModel
@@ -17,6 +18,7 @@ import din.adapter.SongListItemAdapter
 import din.database.LibraryDatabase
 import din.heed_music.R
 import din.heed_music.databinding.FragmentAlbumBinding
+import kotlinx.coroutines.async
 
 class AlbumFragment : Fragment() {
 
@@ -33,7 +35,9 @@ class AlbumFragment : Fragment() {
 
         val songListItemAdapter = SongListItemAdapter(ListItemListener {
             val mainViewModel: MainViewModel by activityViewModels()
-            mainViewModel.play(it)
+            lifecycleScope.async {
+                mainViewModel.playSong(dataSource.get(it))
+            }
         })
         binding.rvAlbumSongs.adapter = songListItemAdapter
 
